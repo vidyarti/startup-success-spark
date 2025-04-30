@@ -5,7 +5,6 @@ import { WhySection } from "@/components/WhySection";
 import { KitComponents } from "@/components/KitComponents";
 import { Testimonials } from "@/components/Testimonials";
 import { CTASection } from "@/components/CTASection";
-import { Link } from "react-router-dom";
 
 const Index = () => {
   useEffect(() => {
@@ -36,10 +35,8 @@ const Index = () => {
         <div className="container px-4 md:px-6">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-2">
-              <Link to="/linkedin-profile" className="flex items-center gap-2 hover:text-startup-blue transition-colors">
-                <Rocket className="h-6 w-6 text-startup-blue" />
-                <span className="text-xl font-bold">StartupSpark</span>
-              </Link>
+              <Rocket className="h-6 w-6 text-startup-blue" />
+              <span className="text-xl font-bold">StartupSpark</span>
             </div>
             <nav className="hidden md:flex items-center gap-6">
               <a href="#" className="text-sm font-medium hover:text-startup-blue">Features</a>
@@ -84,10 +81,10 @@ const Index = () => {
         <div className="container px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <Link to="/linkedin-profile" className="flex items-center gap-2 mb-4 hover:text-gray-300 transition-colors">
+              <div className="flex items-center gap-2 mb-4">
                 <Rocket className="h-6 w-6" />
                 <span className="text-xl font-bold">StartupSpark</span>
-              </Link>
+              </div>
               <p className="text-gray-400">
                 Your complete solution for launching and growing your business.
               </p>
