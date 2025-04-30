@@ -7,11 +7,24 @@ import {
   Settings, 
   ChartBar, 
   Calendar, 
-  Mail 
+  Mail,
+  Linkedin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { useState } from "react";
 
 export const KitComponents = () => {
+  const [openItem, setOpenItem] = useState<number | null>(null);
+
+  const toggleItem = (index: number) => {
+    setOpenItem(openItem === index ? null : index);
+  };
+
   const kitItems = [
     {
       title: "Legal Documents",
@@ -32,6 +45,21 @@ export const KitComponents = () => {
       title: "Marketing Playbook",
       description: "Marketing strategies and templates to help you attract and retain customers.",
       icon: <TrendingUp className="h-10 w-10" />
+    },
+    {
+      title: "Brand Identity",
+      description: "Tools and templates to build your professional online presence on LinkedIn and beyond.",
+      icon: <Linkedin className="h-10 w-10" />,
+      dropdown: [
+        {
+          label: "Sophie's LinkedIn Profile",
+          url: "https://linkedin.com/in/sophie-bloom-florist"
+        },
+        {
+          label: "Bloom Florist Business Page",
+          url: "https://linkedin.com/company/bloom-florist"
+        }
+      ]
     },
     {
       title: "Operations Manual",
@@ -73,11 +101,50 @@ export const KitComponents = () => {
               key={index} 
               className="text-center p-6 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-all duration-300"
             >
-              <div className="inline-flex items-center justify-center mb-4 rounded-full bg-startup-purple/10 p-3 text-startup-purple">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+              {item.dropdown ? (
+                <Collapsible
+                  open={openItem === index}
+                  onOpenChange={() => toggleItem(index)}
+                  className="w-full"
+                >
+                  <CollapsibleTrigger className="w-full">
+                    <div className="flex flex-col items-center cursor-pointer">
+                      <div className="inline-flex items-center justify-center mb-4 rounded-full bg-startup-purple/10 p-3 text-startup-purple">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-gray-600">{item.description}</p>
+                      <span className="text-startup-blue mt-2 text-sm font-medium">
+                        {openItem === index ? "Hide Links" : "View Links"}
+                      </span>
+                    </div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-4 pt-4 border-t border-gray-100">
+                    <div className="flex flex-col space-y-2">
+                      {item.dropdown.map((link, linkIndex) => (
+                        <a
+                          key={linkIndex}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-startup-blue hover:text-startup-darkblue transition-colors"
+                        >
+                          <Linkedin className="h-4 w-4 mr-2" />
+                          <span>{link.label}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              ) : (
+                <>
+                  <div className="inline-flex items-center justify-center mb-4 rounded-full bg-startup-purple/10 p-3 text-startup-purple">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.description}</p>
+                </>
+              )}
             </div>
           ))}
         </div>
