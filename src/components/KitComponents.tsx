@@ -36,7 +36,7 @@ export const KitComponents = () => {
           url: "https://linkedin.com/in/sophie-bloom-florist"
         },
         {
-          label: "Bloom Florist Business Page",
+          label: "Sophie's LinkedIn Business Page",
           url: "https://linkedin.com/company/bloom-florist"
         }
       ]
