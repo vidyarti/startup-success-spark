@@ -1,4 +1,3 @@
-
 import { 
   FileText, 
   BookText, 
@@ -17,6 +16,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const KitComponents = () => {
   const [openItem, setOpenItem] = useState<number | null>(null);
@@ -37,7 +37,8 @@ export const KitComponents = () => {
         },
         {
           label: "Sophie's LinkedIn Business Page",
-          url: "https://linkedin.com/company/bloom-florist"
+          url: "/linkedin-company",
+          internal: true
         }
       ]
     },
@@ -122,16 +123,27 @@ export const KitComponents = () => {
                   <CollapsibleContent className="mt-4 pt-4 border-t border-gray-100">
                     <div className="flex flex-col space-y-2">
                       {item.dropdown.map((link, linkIndex) => (
-                        <a
-                          key={linkIndex}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-startup-blue hover:text-startup-darkblue transition-colors"
-                        >
-                          <Linkedin className="h-4 w-4 mr-2" />
-                          <span>{link.label}</span>
-                        </a>
+                        link.internal ? (
+                          <Link
+                            key={linkIndex}
+                            to={link.url}
+                            className="flex items-center text-startup-blue hover:text-startup-darkblue transition-colors"
+                          >
+                            <Linkedin className="h-4 w-4 mr-2" />
+                            <span>{link.label}</span>
+                          </Link>
+                        ) : (
+                          <a
+                            key={linkIndex}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-startup-blue hover:text-startup-darkblue transition-colors"
+                          >
+                            <Linkedin className="h-4 w-4 mr-2" />
+                            <span>{link.label}</span>
+                          </a>
+                        )
                       ))}
                     </div>
                   </CollapsibleContent>
