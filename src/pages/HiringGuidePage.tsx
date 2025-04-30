@@ -6,19 +6,44 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Checkbox } from "@/components/ui/checkbox";
+import { toast } from "@/components/ui/sonner";
 
 const HiringGuidePage = () => {
-  const { toast } = useToast();
+  const { toast: useToastHook } = useToast();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [showRoleDialog, setShowRoleDialog] = useState(false);
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
 
   const handleSelectPlan = (plan: string) => {
     setSelectedPlan(plan);
-    toast({
+    useToastHook({
       title: "Plan selected",
       description: `You've selected the ${plan} plan.`,
     });
+  };
+
+  const handleRoleSelection = (role: string) => {
+    setSelectedRoles(prev => {
+      if (prev.includes(role)) {
+        return prev.filter(r => r !== role);
+      } else {
+        return [...prev, role];
+      }
+    });
+  };
+
+  const handleConfirmSelection = () => {
+    if (selectedRoles.length === 0) {
+      toast("Please select at least one role to hire for", {
+        description: "You need to select roles before proceeding"
+      });
+      return;
+    }
+    
+    setShowConfirmationDialog(true);
   };
 
   const suggestedRoles = [
@@ -84,15 +109,28 @@ const HiringGuidePage = () => {
           <div className="text-center mb-8">
             <h3 className="text-2xl font-semibold mb-4">Key First Hires for Your Florist Business</h3>
             <p className="text-gray-600 mb-6">
-              As you start your florist business, these roles can help you scale quickly and efficiently
+              As you start your florist business, these roles can help you scale quickly and efficiently. 
+              Select the roles you're interested in hiring for:
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {suggestedRoles.map((role) => (
-                <Card key={role.title} className="hover:shadow-md cursor-pointer transition-shadow" onClick={() => openRoleDetails(role.title)}>
+                <Card 
+                  key={role.title} 
+                  className={`hover:shadow-md transition-shadow ${
+                    selectedRoles.includes(role.title) ? 'border-2 border-blue-500' : ''
+                  }`}
+                >
                   <CardHeader className="pb-2">
                     <div className="flex justify-between items-center">
-                      <h4 className="text-xl font-semibold">{role.title}</h4>
+                      <div className="flex items-center gap-2">
+                        <Checkbox 
+                          id={`role-${role.title}`}
+                          checked={selectedRoles.includes(role.title)}
+                          onCheckedChange={() => handleRoleSelection(role.title)}
+                        />
+                        <h4 className="text-xl font-semibold">{role.title}</h4>
+                      </div>
                       <span className={`text-sm px-2 py-1 rounded ${
                         role.priority === "High" ? "bg-red-100 text-red-800" : 
                         role.priority === "Medium" ? "bg-yellow-100 text-yellow-800" : 
@@ -111,6 +149,13 @@ const HiringGuidePage = () => {
                         </span>
                       ))}
                     </div>
+                    <Button 
+                      variant="ghost" 
+                      className="mt-4 text-blue-600"
+                      onClick={() => openRoleDetails(role.title)}
+                    >
+                      View details
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
@@ -223,8 +268,9 @@ const HiringGuidePage = () => {
           <div className="mt-8 flex justify-center">
             <Button 
               size="lg" 
-              disabled={!selectedPlan} 
+              disabled={!selectedPlan || selectedRoles.length === 0} 
               className="bg-blue-600 hover:bg-blue-700 text-white px-12"
+              onClick={handleConfirmSelection}
             >
               Select plan
             </Button>
@@ -294,8 +340,54 @@ const HiringGuidePage = () => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Confirmation dialog */}
+      <Dialog open={showConfirmationDialog} onOpenChange={setShowConfirmationDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Ready to start hiring!</DialogTitle>
+            <DialogDescription>
+              Great! We'll kick off hiring for:
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <ul className="list-disc pl-5 space-y-2">
+              {selectedRoles.map(role => (
+                <li key={role} className="text-blue-600 font-medium">
+                  {role}
+                  <span className="text-gray-600 font-normal"> - {selectedPlan} plan</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-gray-600 mt-4">
+              Your job listings will be prepared and published according to your selected plan. 
+              We'll notify you as candidates begin to apply.
+            </p>
+            <div className="flex justify-end gap-3 pt-4">
+              <Button 
+                variant="outline" 
+                onClick={() => setShowConfirmationDialog(false)}
+              >
+                Edit selections
+              </Button>
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700"
+                onClick={() => {
+                  setShowConfirmationDialog(false);
+                  toast("Hiring process initiated", {
+                    description: `You've started the hiring process for ${selectedRoles.length} position(s)`,
+                  });
+                }}
+              >
+                Confirm & publish
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
 
 export default HiringGuidePage;
+
