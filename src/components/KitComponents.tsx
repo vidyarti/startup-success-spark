@@ -27,6 +27,21 @@ export const KitComponents = () => {
 
   const kitItems = [
     {
+      title: "Brand Identity",
+      description: "Tools and templates to build your professional online presence on LinkedIn and beyond.",
+      icon: <Linkedin className="h-10 w-10" />,
+      dropdown: [
+        {
+          label: "Sophie's LinkedIn Profile",
+          url: "https://linkedin.com/in/sophie-bloom-florist"
+        },
+        {
+          label: "Bloom Florist Business Page",
+          url: "https://linkedin.com/company/bloom-florist"
+        }
+      ]
+    },
+    {
       title: "Legal Documents",
       description: "Ready-to-use templates for business registration, contracts, and legal agreements.",
       icon: <FileText className="h-10 w-10" />
@@ -45,21 +60,6 @@ export const KitComponents = () => {
       title: "Marketing Playbook",
       description: "Marketing strategies and templates to help you attract and retain customers.",
       icon: <TrendingUp className="h-10 w-10" />
-    },
-    {
-      title: "Brand Identity",
-      description: "Tools and templates to build your professional online presence on LinkedIn and beyond.",
-      icon: <Linkedin className="h-10 w-10" />,
-      dropdown: [
-        {
-          label: "Sophie's LinkedIn Profile",
-          url: "https://linkedin.com/in/sophie-bloom-florist"
-        },
-        {
-          label: "Bloom Florist Business Page",
-          url: "https://linkedin.com/company/bloom-florist"
-        }
-      ]
     },
     {
       title: "Operations Manual",
