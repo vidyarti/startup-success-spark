@@ -45,14 +45,21 @@ export const KitComponents = () => {
       ]
     },
     {
+      title: "Business Plan",
+      description: "Comprehensive business plan templates with financial projections and market analysis.",
+      icon: <BookText className="h-10 w-10" />,
+      dropdown: [
+        {
+          label: "Florist Business Plan",
+          url: "/business-plan?type=florist",
+          internal: true
+        }
+      ]
+    },
+    {
       title: "Legal Documents",
       description: "Ready-to-use templates for business registration, contracts, and legal agreements.",
       icon: <FileText className="h-10 w-10" />
-    },
-    {
-      title: "Business Plan",
-      description: "Comprehensive business plan templates with financial projections and market analysis.",
-      icon: <BookText className="h-10 w-10" />
     },
     {
       title: "Funding Guide",
@@ -87,7 +94,7 @@ export const KitComponents = () => {
   ];
 
   return (
-    <section className="py-16">
+    <section className="py-16" id="kit-components-section">
       <div className="container px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
@@ -131,7 +138,11 @@ export const KitComponents = () => {
                             to={link.url}
                             className="flex items-center text-startup-blue hover:text-startup-darkblue transition-colors"
                           >
-                            <Linkedin className="h-4 w-4 mr-2" />
+                            {item.title === "Brand Identity" ? (
+                              <Linkedin className="h-4 w-4 mr-2" />
+                            ) : (
+                              <BookText className="h-4 w-4 mr-2" />
+                            )}
                             <span>{link.label}</span>
                           </Link>
                         ) : (

@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LinkedInCompanyPage from "./pages/LinkedInCompanyPage";
 import LinkedInProfilePage from "./pages/LinkedInProfilePage";
+import BusinessPlanPage from "./pages/BusinessPlanPage";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/linkedin-company" element={<LinkedInCompanyPage />} />
           <Route path="/linkedin-profile" element={<LinkedInProfilePage />} />
+          <Route path="/business-plan" element={<BusinessPlanPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
