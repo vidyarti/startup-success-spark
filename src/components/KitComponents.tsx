@@ -34,12 +34,12 @@ export const KitComponents = () => {
       icon: <Linkedin className="h-10 w-10" />,
       dropdown: [
         {
-          label: "Sophie's LinkedIn Profile",
+          label: "LinkedIn Profile",
           url: "/linkedin-profile",
           internal: true
         },
         {
-          label: "Sophie's LinkedIn Business Page",
+          label: "LinkedIn Business Page",
           url: "/linkedin-company",
           internal: true
         }
