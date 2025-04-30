@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { WhySection } from "@/components/WhySection";
@@ -8,7 +7,8 @@ import { CTASection } from "@/components/CTASection";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Rocket, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Rocket as RocketIcon } from "lucide-react";
 
 const Index = () => {
   const [businessPrompt, setBusinessPrompt] = useState("");
@@ -52,7 +52,7 @@ const Index = () => {
         <div className="container px-4 md:px-6">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-2">
-              <Rocket className="h-6 w-6 text-startup-blue" />
+              <RocketIcon className="h-6 w-6 text-startup-blue" />
               <span className="text-xl font-bold">StartupSpark</span>
             </div>
             <nav className="hidden md:flex items-center gap-6">
@@ -132,7 +132,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Rocket className="h-6 w-6" />
+                <RocketIcon className="h-6 w-6" />
                 <span className="text-xl font-bold">StartupSpark</span>
               </div>
               <p className="text-gray-400">
@@ -179,29 +179,5 @@ const Index = () => {
     </div>
   );
 };
-
-function Rocket(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-      <path d="M12 15 9 12" />
-      <path d="m5 19 3-3" />
-      <path d="M18 12h-6" />
-      <path d="M8 4h10c2 0 3 1 3 3v10" />
-      <path d="M15 9h.01" />
-    </svg>
-  );
-}
 
 export default Index;
