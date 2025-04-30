@@ -59,7 +59,14 @@ export const KitComponents = () => {
     {
       title: "Legal Setup",
       description: "Ready-to-use templates for business registration, contracts, and legal agreements.",
-      icon: <FileText className="h-10 w-10" />
+      icon: <FileText className="h-10 w-10" />,
+      dropdown: [
+        {
+          label: "Business Legal Setup Guide",
+          url: "/legal-setup",
+          internal: true
+        }
+      ]
     },
     {
       title: "Funding Guide",
