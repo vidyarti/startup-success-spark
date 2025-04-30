@@ -1,3 +1,4 @@
+
 import { 
   FileText, 
   BookText, 
@@ -33,7 +34,8 @@ export const KitComponents = () => {
       dropdown: [
         {
           label: "Sophie's LinkedIn Profile",
-          url: "https://linkedin.com/in/sophie-bloom-florist"
+          url: "/linkedin-profile",
+          internal: true
         },
         {
           label: "Sophie's LinkedIn Business Page",

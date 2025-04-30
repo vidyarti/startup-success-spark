@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LinkedInCompanyPage from "./pages/LinkedInCompanyPage";
+import LinkedInProfilePage from "./pages/LinkedInProfilePage";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/linkedin-company" element={<LinkedInCompanyPage />} />
+          <Route path="/linkedin-profile" element={<LinkedInProfilePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
