@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Rocket } from "lucide-react";
 
 export const HeroSection = () => {
-  const scrollToBusinessPrompt = () => {
-    const businessPromptSection = document.querySelector("#business-prompt-section");
-    if (businessPromptSection) {
-      businessPromptSection.scrollIntoView({ behavior: "smooth" });
+  const scrollToKitComponents = () => {
+    const kitComponentsSection = document.querySelector("#kit-components-section");
+    if (kitComponentsSection) {
+      kitComponentsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -28,7 +28,7 @@ export const HeroSection = () => {
               Everything you need to bootstrap your business idea into reality - from legal requirements to marketing essentials.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <Button size="lg" className="bg-startup-blue hover:bg-startup-darkblue text-white" onClick={scrollToBusinessPrompt}>
+              <Button size="lg" className="bg-startup-blue hover:bg-startup-darkblue text-white" onClick={scrollToKitComponents}>
                 Get Started Free
               </Button>
               <Button variant="outline" size="lg">

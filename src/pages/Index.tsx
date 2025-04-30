@@ -42,9 +42,11 @@ const Index = () => {
       return;
     }
     
-    // In a real app, this would send the data somewhere or redirect
-    alert("Thank you for sharing! We're preparing your startup kit.");
-    // You could navigate to another page here
+    // Scroll to the Kit Components section
+    const kitComponentsSection = document.querySelector("section:has(h2:contains('What\\'s Included in Your Kit'))");
+    if (kitComponentsSection) {
+      kitComponentsSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -115,7 +117,7 @@ const Index = () => {
           <WhySection />
         </div>
         
-        <div className="reveal-animation">
+        <div className="reveal-animation" id="kit-components-section">
           <KitComponents />
         </div>
         
