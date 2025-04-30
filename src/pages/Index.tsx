@@ -43,7 +43,7 @@ const Index = () => {
     }
     
     // Scroll to the Kit Components section
-    const kitComponentsSection = document.querySelector("section:has(h2:contains('What\\'s Included in Your Kit'))");
+    const kitComponentsSection = document.querySelector("#kit-components-section");
     if (kitComponentsSection) {
       kitComponentsSection.scrollIntoView({ behavior: "smooth" });
     }
