@@ -30,7 +30,7 @@ export const KitComponents = () => {
   const kitItems = [
     {
       title: "Brand Identity",
-      description: "Tools and templates to build your professional online presence on LinkedIn and beyond.",
+      description: "To build your professional online on LinkedIn we've created your LinkedIn Profile and a Linked Business Page.",
       icon: <Linkedin className="h-10 w-10" />,
       dropdown: [
         {
