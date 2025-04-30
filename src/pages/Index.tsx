@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { WhySection } from "@/components/WhySection";
@@ -83,7 +84,7 @@ const Index = () => {
         <HeroSection />
         
         {/* Business Prompt Section */}
-        <section className="py-12 bg-startup-lightgray">
+        <section id="business-prompt-section" className="py-12 bg-startup-lightgray">
           <div className="container px-4 md:px-6">
             <Card className="max-w-3xl mx-auto border-2 border-startup-blue/20 shadow-lg">
               <CardHeader className="text-center">

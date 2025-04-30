@@ -3,6 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Rocket } from "lucide-react";
 
 export const HeroSection = () => {
+  const scrollToBusinessPrompt = () => {
+    const businessPromptSection = document.querySelector("#business-prompt-section");
+    if (businessPromptSection) {
+      businessPromptSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="py-16 md:py-24">
       <div className="container px-4 md:px-6">
@@ -21,7 +28,7 @@ export const HeroSection = () => {
               Everything you need to bootstrap your business idea into reality - from legal requirements to marketing essentials.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <Button size="lg" className="bg-startup-blue hover:bg-startup-darkblue text-white">
+              <Button size="lg" className="bg-startup-blue hover:bg-startup-darkblue text-white" onClick={scrollToBusinessPrompt}>
                 Get Started Free
               </Button>
               <Button variant="outline" size="lg">
