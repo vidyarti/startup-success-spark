@@ -1,12 +1,18 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { WhySection } from "@/components/WhySection";
 import { KitComponents } from "@/components/KitComponents";
 import { Testimonials } from "@/components/Testimonials";
 import { CTASection } from "@/components/CTASection";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Rocket, ArrowRight } from "lucide-react";
 
 const Index = () => {
+  const [businessPrompt, setBusinessPrompt] = useState("");
+  
   useEffect(() => {
     // Simple scroll reveal animation
     const animateOnScroll = () => {
@@ -28,6 +34,17 @@ const Index = () => {
       window.removeEventListener("scroll", animateOnScroll);
     };
   }, []);
+
+  const handleSubmitBusiness = () => {
+    if (businessPrompt.trim() === "") {
+      alert("Please tell us a bit about your business first!");
+      return;
+    }
+    
+    // In a real app, this would send the data somewhere or redirect
+    alert("Thank you for sharing! We're preparing your startup kit.");
+    // You could navigate to another page here
+  };
 
   return (
     <div className="min-h-screen">
@@ -58,7 +75,40 @@ const Index = () => {
       </header>
 
       <main>
+        {/* Welcome Banner */}
+        <div className="bg-gradient-to-r from-startup-blue to-startup-purple text-white py-3 px-4 text-center">
+          <p className="text-lg font-medium">Welcome, Sophie Bloom! 👋 Ready to build your dream business?</p>
+        </div>
+        
         <HeroSection />
+        
+        {/* Business Prompt Section */}
+        <section className="py-12 bg-startup-lightgray">
+          <div className="container px-4 md:px-6">
+            <Card className="max-w-3xl mx-auto border-2 border-startup-blue/20 shadow-lg">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl font-bold text-startup-blue">Tell Us About Your Business Vision</CardTitle>
+                <CardDescription className="text-lg">
+                  Share a few details about your business idea and we'll help you create the perfect startup kit.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Textarea 
+                  placeholder="My business is a sustainable flower shop in San Francisco focusing on locally-sourced blooms. My target customers are eco-conscious individuals and businesses looking for unique floral arrangements for special occasions and corporate events..."
+                  className="min-h-[120px] text-base"
+                  value={businessPrompt}
+                  onChange={(e) => setBusinessPrompt(e.target.value)}
+                />
+                <Button 
+                  onClick={handleSubmitBusiness}
+                  className="w-full bg-startup-blue hover:bg-startup-darkblue text-white py-6 text-lg font-medium flex items-center justify-center gap-2"
+                >
+                  Start Building Your Business! <ArrowRight className="ml-1" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
         
         <div className="reveal-animation">
           <WhySection />
