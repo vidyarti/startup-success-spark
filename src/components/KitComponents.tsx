@@ -45,18 +45,6 @@ export const KitComponents = () => {
       ]
     },
     {
-      title: "Business Plan",
-      description: "Comprehensive business plan templates with financial projections and market analysis.",
-      icon: <BookText className="h-10 w-10" />,
-      dropdown: [
-        {
-          label: "Florist Business Plan",
-          url: "/business-plan?type=florist",
-          internal: true
-        }
-      ]
-    },
-    {
       title: "Legal Setup",
       description: "Ready-to-use templates for business registration, contracts, and legal agreements.",
       icon: <FileText className="h-10 w-10" />,
@@ -64,6 +52,18 @@ export const KitComponents = () => {
         {
           label: "Business Legal Setup Guide",
           url: "/legal-setup",
+          internal: true
+        }
+      ]
+    },
+    {
+      title: "Business Plan",
+      description: "Comprehensive business plan templates with financial projections and market analysis.",
+      icon: <BookText className="h-10 w-10" />,
+      dropdown: [
+        {
+          label: "Florist Business Plan",
+          url: "/business-plan?type=florist",
           internal: true
         }
       ]
