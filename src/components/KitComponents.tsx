@@ -8,7 +8,8 @@ import {
   ChartBar, 
   Calendar, 
   Mail,
-  Linkedin
+  Linkedin,
+  Users
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,6 +65,18 @@ export const KitComponents = () => {
         {
           label: "Florist Business Plan",
           url: "/business-plan?type=florist",
+          internal: true
+        }
+      ]
+    },
+    {
+      title: "Hire Now",
+      description: "Guidance on first roles to hire and talent acquisition strategies for your new business.",
+      icon: <Users className="h-10 w-10" />,
+      dropdown: [
+        {
+          label: "LinkedIn Hiring Guide",
+          url: "/hiring-guide",
           internal: true
         }
       ]
@@ -147,6 +160,8 @@ export const KitComponents = () => {
                           >
                             {item.title === "Brand Identity" ? (
                               <Linkedin className="h-4 w-4 mr-2" />
+                            ) : item.title === "Hire Now" ? (
+                              <Users className="h-4 w-4 mr-2" />
                             ) : (
                               <BookText className="h-4 w-4 mr-2" />
                             )}
