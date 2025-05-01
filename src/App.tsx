@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +10,8 @@ import LinkedInProfilePage from "./pages/LinkedInProfilePage";
 import BusinessPlanPage from "./pages/BusinessPlanPage";
 import LegalSetupPage from "./pages/LegalSetupPage";
 import HiringGuidePage from "./pages/HiringGuidePage";
+import StripePaymentPage from "./pages/StripePaymentPage";
+import OrderSummary from "@/pages/OrderSummary"; // Import the OrderSummary component
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,8 @@ const App = () => (
           <Route path="/business-plan" element={<BusinessPlanPage />} />
           <Route path="/legal-setup" element={<LegalSetupPage />} />
           <Route path="/hiring-guide" element={<HiringGuidePage />} />
+          <Route path="/stripe-payment" element={<StripePaymentPage />} />
+          <Route path="/order-summary" element={<OrderSummary />} /> {/* Add this route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

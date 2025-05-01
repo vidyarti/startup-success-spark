@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Check, Linkedin, Users, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -265,16 +264,6 @@ const HiringGuidePage = () => {
             </p>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <Button 
-              size="lg" 
-              disabled={!selectedPlan || selectedRoles.length === 0} 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-12"
-              onClick={handleConfirmSelection}
-            >
-              Select plan
-            </Button>
-          </div>
         </section>
       </main>
 

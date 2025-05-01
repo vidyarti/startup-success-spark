@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { WhySection } from "@/components/WhySection";
@@ -9,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { Rocket as RocketIcon } from "lucide-react";
+import { Rocket as RocketIcon, Home, Briefcase, Users, MessageSquare, Bell, User, Crown, Linkedin } from "lucide-react";
 
 const Index = () => {
   const [businessPrompt, setBusinessPrompt] = useState("");
@@ -55,22 +54,46 @@ const Index = () => {
         <div className="container px-4 md:px-6">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-2">
-              <RocketIcon className="h-6 w-6 text-startup-blue" />
-              <span className="text-xl font-bold">StartupSpark</span>
+              <Linkedin className="h-6 w-6 text-[#0a66c2]" />
+              <span className="text-xl font-bold">Start[In]</span>
             </div>
             <nav className="hidden md:flex items-center gap-6">
-              <a href="#" className="text-sm font-medium hover:text-startup-blue">Features</a>
-              <a href="#" className="text-sm font-medium hover:text-startup-blue">Pricing</a>
-              <a href="#" className="text-sm font-medium hover:text-startup-blue">Resources</a>
-              <a href="#" className="text-sm font-medium hover:text-startup-blue">Contact</a>
+              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
+                <Home className="h-5 w-5" />
+                Home
+              </a>
+              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
+                <Users className="h-5 w-5" />
+                My Network
+              </a>
+              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
+                <Briefcase className="h-5 w-5" />
+                Jobs
+              </a>
+              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
+                <MessageSquare className="h-5 w-5" />
+                Messaging
+              </a>
+              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
+                <Bell className="h-5 w-5" />
+                Notifications
+              </a>
+              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
+                <User className="h-5 w-5" />
+                Me
+              </a>
             </nav>
             <div className="flex items-center gap-4">
-              <a href="#" className="text-sm font-medium hover:underline">Log in</a>
+              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
+                <User className="h-5 w-5" />
+                Me
+              </a>
               <a 
                 href="#" 
-                className="rounded-md bg-startup-blue px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-startup-darkblue"
+                className="flex flex-col items-center text-sm font-medium hover:text-startup-blue"
               >
-                Sign up
+                <Crown className="h-5 w-5 text-yellow-500" />
+                Premium Features
               </a>
             </div>
           </div>

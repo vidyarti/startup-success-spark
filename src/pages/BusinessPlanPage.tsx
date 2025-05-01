@@ -1,10 +1,37 @@
-
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Download, BookText } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
+import { Carousel } from "@/components/ui/carousel"; // Assuming a Carousel component exists
+
+const professionals = [
+  {
+    id: 1,
+    name: "John Doe",
+    title: "Business Consultant",
+    imgSrc: "/images/professionals/john-doe.png",
+    description: "Expert in business plan audits and financial projections.",
+    profileLink: "https://linkedin.com/in/johndoe",
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    title: "Startup Advisor",
+    imgSrc: "/images/professionals/jane.jpg",
+    description: "Specializes in helping startups refine their business strategies.",
+    profileLink: "https://linkedin.com/in/janesmith",
+  },
+  {
+    id: 3,
+    name: "Emily Johnson",
+    title: "Financial Analyst",
+    imgSrc: "/images/professionals/emily.png",
+    description: "Provides insights on market analysis and competitive positioning.",
+    profileLink: "https://linkedin.com/in/emilyjohnson",
+  },
+];
 
 const BusinessPlanPage = () => {
   const [searchParams] = useSearchParams();
@@ -126,6 +153,46 @@ Month 8: Launch of corporate subscription program`
           <p className="text-lg text-gray-600">
             Based on your input for a sustainable flower shop in San Francisco
           </p>
+        </div>
+
+        {/* LinkedIn Professionals Carousel */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-startup-darkblue text-center mb-6">
+            LinkedIn Professionals to Help You
+          </h2>
+          <div className="flex overflow-x-auto space-x-4 px-4">
+            {professionals.map((professional) => (
+              <div
+                key={professional.id}
+                className="flex-shrink-0 w-64 bg-white rounded-lg shadow-md p-4 text-center"
+              >
+                <img
+                  src={professional.imgSrc}
+                  alt={professional.name}
+                  className="mx-auto h-24 w-24 rounded-full object-cover mb-4"
+                />
+                <h3 className="text-lg font-semibold">{professional.name}</h3>
+                <p className="text-sm text-gray-600">{professional.title}</p>
+                <p className="text-sm text-gray-500 mt-2">{professional.description}</p>
+                <div className="mt-4 flex justify-center space-x-2">
+                  <Button
+                    size="sm"
+                    className="bg-startup-blue hover:bg-startup-darkblue text-white"
+                    onClick={() => window.open(professional.profileLink, "_blank")}
+                  >
+                    Connect
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="text-startup-blue border-startup-blue hover:bg-startup-lightblue"
+                  >
+                    Message
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {loading ? (
