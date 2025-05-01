@@ -170,6 +170,7 @@ const Index = () => {
               <h3 className="font-semibold mb-4">Kit Contents</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white">Legal Documents</a></li>
+                <li><a href="#" className="hover:text-white">Brand Identity</a></li>
                 <li><a href="#" className="hover:text-white">Business Plan</a></li>
                 <li><a href="#" className="hover:text-white">Marketing Templates</a></li>
                 <li><a href="#" className="hover:text-white">Financial Tools</a></li>

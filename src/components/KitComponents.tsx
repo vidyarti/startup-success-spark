@@ -1,4 +1,3 @@
-
 import { 
   FileText, 
   BookText, 
@@ -29,18 +28,13 @@ export const KitComponents = () => {
 
   const kitItems = [
     {
-      title: "Brand Identity",
-      description: "To build your professional online on LinkedIn we've created your LinkedIn Profile and a Linked Business Page.",
-      icon: <Linkedin className="h-10 w-10" />,
+      title: "Business Plan",
+      description: "Comprehensive business plan templates with financial projections and market analysis.",
+      icon: <BookText className="h-10 w-10" />,
       dropdown: [
         {
-          label: "LinkedIn Profile",
-          url: "/linkedin-profile",
-          internal: true
-        },
-        {
-          label: "LinkedIn Business Page",
-          url: "/linkedin-company",
+          label: "Florist Business Plan",
+          url: "/business-plan?type=florist",
           internal: true
         }
       ]
@@ -58,13 +52,18 @@ export const KitComponents = () => {
       ]
     },
     {
-      title: "Business Plan",
-      description: "Comprehensive business plan templates with financial projections and market analysis.",
-      icon: <BookText className="h-10 w-10" />,
+      title: "Brand Identity",
+      description: "To build your professional online on LinkedIn we've created your LinkedIn Profile and a Linked Business Page.",
+      icon: <Linkedin className="h-10 w-10" />,
       dropdown: [
         {
-          label: "Florist Business Plan",
-          url: "/business-plan?type=florist",
+          label: "LinkedIn Profile",
+          url: "/linkedin-profile",
+          internal: true
+        },
+        {
+          label: "LinkedIn Business Page",
+          url: "/linkedin-company",
           internal: true
         }
       ]
