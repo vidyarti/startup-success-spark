@@ -345,7 +345,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Filing your LLC formation documents with state authorities..." 
-          duration={8000} 
+          duration={1500} // Reduced from 8000
           onComplete={() => setCurrentStep(5)} 
         />
       ),
@@ -360,7 +360,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Applying for your EIN with the IRS..." 
-          duration={6000} 
+          duration={1000} // Reduced from 6000
           onComplete={() => setCurrentStep(6)} 
         />
       ),
@@ -431,7 +431,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Generating your LLC Operating Agreement..." 
-          duration={10000} 
+          duration={1500} // Reduced from 10000
           onComplete={() => setCurrentStep(8)} 
         />
       ),
@@ -503,7 +503,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Registering for business taxes and sales tax permit..." 
-          duration={7000} 
+          duration={1000} // Reduced from 7000
           onComplete={() => setCurrentStep(10)} 
         />
       ),
@@ -518,7 +518,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Setting up your compliance calendar and reminders..." 
-          duration={5000} 
+          duration={1000} // Reduced from 5000
           onComplete={() => setCurrentStep(11)} 
         />
       ),

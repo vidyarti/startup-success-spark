@@ -11,7 +11,7 @@ import { ArrowRight } from "lucide-react";
 import { Rocket as RocketIcon, Home, Briefcase, Users, MessageSquare, Bell, User, Crown, Linkedin } from "lucide-react";
 
 const Index = () => {
-  const [businessPrompt, setBusinessPrompt] = useState("");
+  const [businessPrompt, setBusinessPrompt] = useState("My business is a sustainable flower shop in San Francisco focusing on locally-sourced blooms. My target customers are eco-conscious individuals and businesses looking for unique floral arrangements for special occasions and corporate events...");
   
   useEffect(() => {
     // Simple scroll reveal animation
@@ -84,10 +84,6 @@ const Index = () => {
               </a>
             </nav>
             <div className="flex items-center gap-4">
-              <a href="#" className="flex flex-col items-center text-sm font-medium hover:text-startup-blue">
-                <User className="h-5 w-5" />
-                Me
-              </a>
               <a 
                 href="#" 
                 className="flex flex-col items-center text-sm font-medium hover:text-startup-blue"
