@@ -41,7 +41,7 @@ export const PaymentForm = ({ amount, onCancel }: PaymentFormProps) => {
 
   const form = useForm<FormValues>({
     defaultValues: {
-      cardName: "",
+      cardName: "Sophie Blook",
       cardNumber: "",
       expiryDate: "",
       cvv: "",
