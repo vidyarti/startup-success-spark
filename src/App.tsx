@@ -11,6 +11,8 @@ import LinkedInProfilePage from "./pages/LinkedInProfilePage";
 import BusinessPlanPage from "./pages/BusinessPlanPage";
 import LegalSetupPage from "./pages/LegalSetupPage";
 import HiringGuidePage from "./pages/HiringGuidePage";
+import OrderSummaryPage from "./pages/OrderSummaryPage";
+import PaymentSuccessPage from "./pages/PaymentSuccessPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/business-plan" element={<BusinessPlanPage />} />
           <Route path="/legal-setup" element={<LegalSetupPage />} />
           <Route path="/hiring-guide" element={<HiringGuidePage />} />
+          <Route path="/order-summary" element={<OrderSummaryPage />} />
+          <Route path="/payment-success" element={<PaymentSuccessPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
