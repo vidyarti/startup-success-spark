@@ -43,7 +43,7 @@ const LinkedInProfilePage = () => {
                 </Avatar>
                 <div>
                   <h1 className="text-2xl font-bold">Sophie Bloom</h1>
-                  <p className="text-lg">Founder & Head Florist at Sophie's Blooms</p>
+                  <p className="text-lg">Founder & Head Florist at Bloom Baby Bloom!</p>
                   <div className="flex items-center gap-1 text-gray-600 text-sm mt-1">
                     <MapPin className="h-4 w-4" />
                     <span>San Francisco, California</span>
@@ -70,7 +70,7 @@ const LinkedInProfilePage = () => {
                 <h2 className="text-xl font-bold mb-4">About</h2>
                 <p className="text-gray-600">
                   Passionate florist with over 10 years of experience creating beautiful, sustainable floral arrangements.
-                  Founder of Sophie's Blooms, a boutique floral design studio specializing in weddings, events, and daily
+                  Founder of Bloom Baby Bloom!, a boutique floral design studio specializing in weddings, events, and daily
                   deliveries in the San Francisco Bay Area.
                 </p>
                 <p className="text-gray-600 mt-4">
@@ -91,7 +91,7 @@ const LinkedInProfilePage = () => {
                     </div>
                     <div>
                       <h3 className="font-medium">Founder & Head Florist</h3>
-                      <p className="text-gray-600">Sophie's Blooms</p>
+                      <p className="text-gray-600">Bloom Baby Bloom!</p>
                       <p className="text-sm text-gray-500">Jan 2023 - Present · 1 yr 4 mos</p>
                       <p className="text-sm text-gray-600 mt-2">
                         Leading a team of talented florists, managing all aspects of the business from design to delivery,

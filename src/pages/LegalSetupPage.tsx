@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { 
   FileText, 
@@ -25,6 +24,8 @@ import { useForm } from "react-hook-form";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { Carousel } from "@/components/ui/carousel"; // Import a carousel component if available
+import { Avatar } from "@/components/ui/avatar"; // Import Avatar for professional images
 
 interface StepCompletionProps {
   title: string;
@@ -344,7 +345,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Filing your LLC formation documents with state authorities..." 
-          duration={8000} 
+          duration={1500} // Reduced from 8000
           onComplete={() => setCurrentStep(5)} 
         />
       ),
@@ -359,7 +360,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Applying for your EIN with the IRS..." 
-          duration={6000} 
+          duration={1000} // Reduced from 6000
           onComplete={() => setCurrentStep(6)} 
         />
       ),
@@ -430,7 +431,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Generating your LLC Operating Agreement..." 
-          duration={10000} 
+          duration={1500} // Reduced from 10000
           onComplete={() => setCurrentStep(8)} 
         />
       ),
@@ -502,7 +503,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Registering for business taxes and sales tax permit..." 
-          duration={7000} 
+          duration={1000} // Reduced from 7000
           onComplete={() => setCurrentStep(10)} 
         />
       ),
@@ -517,7 +518,7 @@ const LegalSetupPage: React.FC = () => {
       component: (
         <StepCompletion 
           title="Setting up your compliance calendar and reminders..." 
-          duration={5000} 
+          duration={1000} // Reduced from 5000
           onComplete={() => setCurrentStep(11)} 
         />
       ),
@@ -587,6 +588,33 @@ const LegalSetupPage: React.FC = () => {
   const currentStepData = steps[currentStep];
   const progress = ((currentStep) / (steps.length - 1)) * 100;
 
+  const professionals = [
+    {
+      name: "John Doe",
+      title: "Business Attorney",
+      image: "/images/professionals/john-doe.png", // Ensure this path starts from the public directory
+      description: "Specializes in small business legal setup and compliance.",
+    },
+    {
+      name: "Jane Smith",
+      title: "Tax Consultant",
+      image: "/images/professionals/jane.jpg",
+      description: "Expert in tax registration and EIN applications.",
+    },
+    {
+      name: "Emily Johnson",
+      title: "Corporate Lawyer",
+      image: "/images/professionals/emily.png",
+      description: "Helps with LLC formation and operating agreements.",
+    },
+    {
+      name: "Michael Brown",
+      title: "Insurance Advisor",
+      image: "/images/professionals/michael.png",
+      description: "Guides businesses in selecting the right insurance coverage.",
+    },
+  ];
+
   return (
     <div className="min-h-screen py-12 px-4 bg-white">
       <div className="max-w-4xl mx-auto">
@@ -596,6 +624,38 @@ const LegalSetupPage: React.FC = () => {
           </Link>
           <h1 className="text-3xl font-bold">Legal Business Setup</h1>
           <p className="text-gray-600 mt-2">Complete the legal requirements for your florist business</p>
+        </div>
+
+        {/* LinkedIn-style Carousel */}
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4">Connect with Professionals</h2>
+          <Carousel className="flex gap-4 overflow-x-auto">
+            {professionals.map((professional, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-64 bg-white rounded-lg shadow-md border border-gray-200 p-4"
+              >
+                <div className="flex items-center gap-4">
+                  <Avatar className="w-12 h-12 rounded-full">
+                    <img src={professional.image} alt={professional.name} className="w-full h-full rounded-full object-cover" />
+                  </Avatar>
+                  <div>
+                    <h3 className="font-medium">{professional.name}</h3>
+                    <p className="text-sm text-gray-500">{professional.title}</p>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-600 mt-4">{professional.description}</p>
+                <div className="mt-4 flex gap-2">
+                  <Button size="sm" className="flex-1 bg-startup-blue text-white hover:bg-startup-darkblue">
+                    Connect
+                  </Button>
+                  <Button size="sm" variant="outline" className="flex-1">
+                    Message
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </Carousel>
         </div>
 
         {currentStep > 0 && currentStep < steps.length - 1 && (

@@ -1,13 +1,53 @@
-
 import { useState } from "react";
-import { Flower, Linkedin, ChartBar } from "lucide-react";
+import { Flower, Linkedin, ChartBar, ShoppingCart } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 const LinkedInCompanyPage = () => {
   const [activeTab, setActiveTab] = useState("blooms");
-  
+  const [loadingStates, setLoadingStates] = useState({}); // Track loading state per product
+  const [cartCount, setCartCount] = useState(0);
+  const navigate = useNavigate();
+
+  const handleAddToCart = (productId) => {
+    setLoadingStates((prev) => ({ ...prev, [productId]: true })); // Set loading for specific product
+    setTimeout(() => {
+      setLoadingStates((prev) => ({ ...prev, [productId]: false })); // Reset loading for specific product
+      setCartCount((prev) => prev + 1); // Increment cart count
+      // Removed alert
+    }, 2000);
+  };
+
+  const handleCartClick = () => {
+    navigate("/stripe-payment");
+    setTimeout(() => {
+      navigate("/order-summary");
+    }, 2000); // Simulate a delay before navigating to the Order Summary page
+  };
+
+  const products = [
+    {
+      id: 1,
+      title: "Spring Bouquet",
+      price: "$65",
+      imgSrc: "/images/Bouquet.png",
+    },
+    {
+      id: 2,
+      title: "Wedding Collection",
+      price: "$120",
+      imgSrc: "/images/wedding.png",
+    },
+    {
+      id: 3,
+      title: "Succulents Arrangement",
+      price: "$45",
+      imgSrc: "/images/succ.png",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* LinkedIn-style header */}
@@ -41,14 +81,22 @@ const LinkedInCompanyPage = () => {
       <div className="container mx-auto px-4 mt-20 mb-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="text-2xl font-bold">Sophie's Blooms</h1>
+            <h1 className="text-2xl font-bold">Bloom Baby Bloom!</h1>
             <p className="text-gray-600">Floral Design & Boutique</p>
             <p className="text-sm text-gray-500 mt-1">San Francisco, California · 11-50 employees</p>
           </div>
-          <div className="mt-4 md:mt-0">
+          <div className="mt-4 md:mt-0 flex items-center gap-4">
             <Button className="bg-blue-600 hover:bg-blue-700">
               Visit Website
             </Button>
+            <div className="relative cursor-pointer" onClick={handleCartClick}>
+              <ShoppingCart className="h-6 w-6 text-gray-700" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full px-2 py-0.5">
+                  {cartCount}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -69,7 +117,7 @@ const LinkedInCompanyPage = () => {
               >
                 <div className="flex items-center gap-2">
                   <Flower className="h-5 w-5" />
-                  <span>Sophie's Blooms</span>
+                  <span>Bloom Baby Bloom!</span>
                 </div>
               </TabsTrigger>
               <TabsTrigger 
@@ -86,38 +134,33 @@ const LinkedInCompanyPage = () => {
             {/* Blooms Tab Content */}
             <TabsContent value="blooms" className="pt-6">
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
-                <h2 className="text-xl font-bold mb-4">Welcome to Sophie's Blooms</h2>
+                <h2 className="text-xl font-bold mb-4">Welcome to Bloom Baby Bloom!</h2>
                 <p className="text-gray-600 mb-6">
-                  Sophie's Blooms creates beautiful, sustainable floral arrangements for all occasions using locally-sourced flowers.
+                  Bloom Baby Bloom! creates beautiful, sustainable floral arrangements for all occasions using locally-sourced flowers.
                 </p>
 
                 {/* Featured Products */}
                 <h3 className="font-semibold text-lg mb-4">Featured Arrangements</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    {
-                      title: "Spring Bouquet",
-                      price: "$65",
-                      image: "bg-gradient-to-br from-pink-200 to-purple-100"
-                    },
-                    {
-                      title: "Wedding Collection",
-                      price: "$120",
-                      image: "bg-gradient-to-br from-blue-100 to-pink-100"
-                    },
-                    {
-                      title: "Succulents Arrangement",
-                      price: "$45",
-                      image: "bg-gradient-to-br from-green-100 to-teal-100"
-                    }
-                  ].map((product, index) => (
-                    <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow">
-                      <div className={`${product.image} h-48 w-full`}></div>
+                  {products.map((product) => (
+                    <Card key={product.id} className="overflow-hidden hover:shadow-md transition-shadow">
+                      <img
+                        src={product.imgSrc}
+                        alt={product.title}
+                        className="h-48 w-full object-cover" // Ensure the image fits within the card
+                      />
                       <CardContent className="p-4">
                         <h3 className="font-medium">{product.title}</h3>
                         <div className="flex justify-between items-center mt-2">
                           <span className="font-bold text-gray-800">{product.price}</span>
-                          <Button size="sm" variant="outline">Add to Cart</Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleAddToCart(product.id)} // Pass product ID to handler
+                            disabled={loadingStates[product.id]} // Disable button while loading
+                          >
+                            {loadingStates[product.id] ? "Adding..." : "Add to Cart"}
+                          </Button>
                         </div>
                       </CardContent>
                     </Card>
@@ -128,7 +171,7 @@ const LinkedInCompanyPage = () => {
                 <div className="mt-12">
                   <h3 className="font-semibold text-lg mb-4">Our Story</h3>
                   <p className="text-gray-600 mb-4">
-                    Founded by Sophie Bloom in 2023, Sophie's Blooms is dedicated to bringing beauty and joy through thoughtfully designed floral arrangements. 
+                    Founded by Sophie Bloom in 2023, Bloom Baby Bloom! is dedicated to bringing beauty and joy through thoughtfully designed floral arrangements. 
                     We partner with local farms to source the freshest, most sustainable blooms for every season.
                   </p>
                   <p className="text-gray-600">
